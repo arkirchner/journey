@@ -16,6 +16,7 @@ defmodule JourneyWeb.Router do
   scope "/", JourneyWeb do
     pipe_through :browser
 
+    resources "/events", EventController
     get "/", PageController, :index
   end
 
