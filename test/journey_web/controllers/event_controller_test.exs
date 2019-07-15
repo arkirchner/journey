@@ -3,8 +3,14 @@ defmodule JourneyWeb.EventControllerTest do
 
   alias Journey.Trip
 
-  @create_attrs %{name: "some name"}
-  @update_attrs %{name: "some updated name"}
+  image_upload = %Plug.Upload{
+    content_type: "image/png",
+    filename: "photo.png",
+    path: "./test/support/fixtures/image.png"
+  }
+
+  @create_attrs %{name: "some name", photo: image_upload}
+  @update_attrs %{name: "some updated name", photo: image_upload}
   @invalid_attrs %{name: nil}
 
   def fixture(:event) do
@@ -75,6 +81,7 @@ defmodule JourneyWeb.EventControllerTest do
     test "deletes chosen event", %{conn: conn, event: event} do
       conn = delete(conn, Routes.event_path(conn, :delete, event))
       assert redirected_to(conn) == Routes.event_path(conn, :index)
+
       assert_error_sent 404, fn ->
         get(conn, Routes.event_path(conn, :show, event))
       end

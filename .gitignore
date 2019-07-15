@@ -37,3 +37,6 @@ npm-debug.log
 *.DS_Store
 *.swo
 *.swp
+
+# Ignore development uploads
+/uploads

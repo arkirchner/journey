@@ -16,3 +16,6 @@ config :journey, JourneyWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+config :arc,
+  storage: Arc.Storage.Local

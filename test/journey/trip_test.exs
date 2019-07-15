@@ -6,9 +6,15 @@ defmodule Journey.TripTest do
   describe "events" do
     alias Journey.Trip.Event
 
-    @valid_attrs %{name: "some name"}
-    @update_attrs %{name: "some updated name"}
-    @invalid_attrs %{name: nil}
+    image_upload = %Plug.Upload{
+      content_type: "image/png",
+      filename: "photo.png",
+      path: "./test/support/fixtures/image.png"
+    }
+
+    @valid_attrs %{name: "some name", photo: image_upload}
+    @update_attrs %{name: "some updated name", photo: image_upload}
+    @invalid_attrs %{name: nil, photo: nil}
 
     def event_fixture(attrs \\ %{}) do
       {:ok, event} =
