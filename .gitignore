@@ -16,6 +16,7 @@
 /tags
 /tmp/*
 /yarn-error.log
+/.rubocop-https---raw-githubusercontent-com-thoughtbot-guides-master-style-ruby--rubocop-yml
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key

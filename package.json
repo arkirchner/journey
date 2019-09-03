@@ -2,14 +2,21 @@
   "name": "journey",
   "private": true,
   "dependencies": {
-    "@rails/actioncable": "^6.0.0-alpha",
-    "@rails/activestorage": "^6.0.0-alpha",
-    "@rails/ujs": "^6.0.0-alpha",
+    "@rails/actioncable": "^6.0.0",
+    "@rails/activestorage": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "^4.0.7",
     "normalize.css": "^8.0.1"
   },
   "version": "0.1.0",
   "devDependencies": {
+    "@prettier/plugin-ruby": "^0.15.0",
+    "@thoughtbot/eslint-config": "^0.1.0",
+    "@thoughtbot/stylelint-config": "^1.0.2",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.3.0",
+    "prettier": "^1.18.2",
+    "stylelint": "^10.1.0",
     "webpack-dev-server": "^3.8.0"
   }
 }
