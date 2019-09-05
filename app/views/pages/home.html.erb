@@ -1,0 +1,13 @@
+Save your Journey
+
+<% if current_user %>
+  <h2>Hello <%= current_user.name %></h2>
+  <%= button_to "Sign Out!", auth_path, method: :delete %>
+<% else %>
+  <h2>Login please.</h2>
+  <%= link_to "Sign in with github", github_auth_path %>
+  <% unless Rails.env.production? %>
+    <%= link_to "Sign in as test user", developer_auth_path %>
+  <% end %>
+<% end %>
+
