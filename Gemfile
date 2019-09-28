@@ -11,12 +11,10 @@ gem "dotenv-rails", require: "dotenv/rails-now"
 
 gem "autoprefixer-rails"
 gem "bootsnap", require: false
-gem "bourbon", ">= 5.0.1"
 gem "delayed_job_active_record"
 gem "high_voltage"
 gem "honeybadger"
 gem "inline_svg"
-gem "neat", ">= 3.0.1"
 gem "oj"
 gem "omniauth"
 gem "omniauth-github"
