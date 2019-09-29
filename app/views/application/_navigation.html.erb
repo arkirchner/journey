@@ -1,0 +1,43 @@
+<nav class="navbar navbar-light bg-light">
+  <%= link_to "My Journey", root_path, class: "navbar-brand" %>
+
+  <ul class="nav d-flex align-items-center">
+    <% if current_user %>
+      <li class="nav-item dropdown" data-controller="dropdown">
+        <a class="nav-link dropdown-toggle"
+           href="#"
+           role="button"
+           data-action="dropdown#toggle"
+           aria-haspopup="true"
+           aria-expanded="false">
+          <%= inline_svg "@fortawesome/fontawesome-free/svgs/solid/user.svg", class: "nav-icon" %>
+          <span class="navbar-text">
+            <%= current_user.name %>
+          </span>
+        </a>
+        <div class="dropdown-menu"
+             aria-labelledby="navbarDropdownMenuLink"
+             data-target="dropdown.menu">
+          <%= button_to "Sign Out!", auth_path, class: "dropdown-item",
+                                                method: :delete,
+                                                data: { target: "dropdown.item" } %>
+        </div>
+      </li>
+    <% else %>
+      <li class="nav-item">
+        <span class="navbar-text">
+          Sign in with
+        </span>
+        <%= link_to github_auth_path do %>
+          <span class="sr-only">Github</span>
+          <%= inline_svg "@fortawesome/fontawesome-free/svgs/brands/github.svg", class: "nav-icon ml-2" %>
+        <% end %>
+        <% unless Rails.env.production? %>
+          <%= link_to developer_auth_path do %>
+            <%= inline_svg "@fortawesome/fontawesome-free/svgs/brands/dev.svg", class: "nav-icon ml-2" %>
+          <% end %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</nav>

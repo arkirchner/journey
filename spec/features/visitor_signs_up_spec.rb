@@ -21,6 +21,6 @@ describe "Visitor signs up", js: true do
 
   def sign_up_github
     visit "/"
-    click_link "Sign in with github"
+    click_link "Github"
   end
 end
