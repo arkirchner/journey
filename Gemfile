@@ -12,7 +12,6 @@ gem "dotenv-rails", require: "dotenv/rails-now"
 gem "autoprefixer-rails"
 gem "bootsnap", require: false
 gem "delayed_job_active_record"
-gem "high_voltage"
 gem "honeybadger"
 gem "inline_svg"
 gem "oj"

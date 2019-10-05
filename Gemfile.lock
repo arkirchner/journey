@@ -131,7 +131,6 @@ GEM
       activesupport (>= 4.2.0)
     hashdiff (1.0.0)
     hashie (3.6.0)
-    high_voltage (3.1.2)
     honeybadger (4.5.1)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
@@ -346,7 +345,6 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails
   formulaic
-  high_voltage
   honeybadger
   inline_svg
   launchy

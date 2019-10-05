@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :create
+  skip_before_action :redirect_when_unauthorized, only: :create
 
   def create
     user = User.find_or_create_from_auth_hash(auth_hash)
