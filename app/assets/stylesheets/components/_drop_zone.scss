@@ -1,0 +1,116 @@
+.drop-zone {
+  background-color: $light;
+  border: 4px solid $primary;
+  border-radius: 1rem;
+  border-style: dashed;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0.5rem;
+  min-height: 7rem;
+  padding: 0.5rem;
+
+  &:hover {
+    animation: dropZoneFlicker 1s infinite ease-in-out;
+    cursor: pointer;
+  }
+}
+
+.drop-zone__item__state--downloading {
+  animation: spin 4s infinite linear;
+  fill: $secondary;
+}
+
+.drop-zone__item__state--downloaded {
+  animation: none;
+  fill: $success;
+}
+
+.drop-zone__item {
+  flex: 0 0 auto;
+  height: 5rem;
+  margin: 0.25rem;
+  position: relative;
+  width: 5rem;
+
+  .drop-zone__item__state--downloaded {
+    opacity: 0;
+  }
+}
+
+.drop-zone__item--active {
+  .drop-zone__item__state--downloading {
+    animation: spin 4s infinite linear, fadeOut 0.5s linear;
+    opacity: 0;
+  }
+
+  .drop-zone__item__state--downloaded {
+    animation: dropZoneItemFadeIn 1s linear;
+    opacity: 1;
+  }
+}
+
+.drop-zone__item__image {
+  border-radius: 1rem;
+  height: 100%;
+  opacity: 0.4;
+  width: 100%;
+}
+
+.drop-zone__item__icon {
+  left: 0;
+  margin: 1rem;
+  position: absolute;
+  top: 0;
+}
+
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dropZoneItemFadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes dropZoneFlicker {
+  0% {
+    border: 4px solid $primary;
+    border-style: dashed;
+  }
+
+  50% {
+    border: 4px solid $warning;
+    border-style: dashed;
+  }
+
+  100% {
+    border: 4px solid $primary;
+    border-style: dashed;
+  }
+}

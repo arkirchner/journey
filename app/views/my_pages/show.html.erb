@@ -1,0 +1,21 @@
+<main class="container-fluid">
+  <h1>Explore your journey around the world.</h1>
+
+  <div class="drop-zone">
+    <% 2.times do %>
+      <div class="drop-zone__item">
+        <img class="drop-zone__item__image" src="https://dummyimage.com/600x400/000/fff.png">
+        <%= inline_svg "@fortawesome/fontawesome-free/svgs/solid/spinner.svg", class: "drop-zone__item__icon drop-zone__item__state--downloading" %>
+        <%= inline_svg "@fortawesome/fontawesome-free/svgs/solid/check-double.svg", class: "drop-zone__item__icon drop-zone__item__state--downloaded" %>
+      </div>
+    <% end %>
+
+    <% 2.times do %>
+      <div class="drop-zone__item drop-zone__item--active">
+        <img class="drop-zone__item__image" src="https://dummyimage.com/600x400/000/fff.png">
+        <%= inline_svg "@fortawesome/fontawesome-free/svgs/solid/spinner.svg", class: "drop-zone__item__icon drop-zone__item__state--downloading" %>
+        <%= inline_svg "@fortawesome/fontawesome-free/svgs/solid/check-double.svg", class: "drop-zone__item__icon drop-zone__item__state--downloaded" %>
+      </div>
+    <% end %>
+  </div>
+</main>
