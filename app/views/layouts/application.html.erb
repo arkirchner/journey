@@ -9,14 +9,15 @@
     https://github.com/calebthompson/title#usage
   %>
   <title><%= title %></title>
-  <%= stylesheet_link_tag :application, media: "all" %>
+  <%= stylesheet_link_tag :application, integrity: true, media: "all", "data-turbolinks-track": "reload" %>
+  <%= javascript_pack_tag :application, integrity: true, "data-turbolinks-track": "reload", defer: true %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
   <%= render "navigation" %>
   <%= render "flashes" -%>
   <%= yield %>
-  <%= render "javascript" %>
   <%= render "css_overrides" %>
 </body>
 </html>

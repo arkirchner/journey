@@ -28,6 +28,7 @@ gem "skylight"
 gem "spring-commands-rspec", group: :development
 gem "sprockets", ">= 3.0.0"
 gem "title"
+gem "turbolinks"
 gem "webpacker"
 
 group :development do
