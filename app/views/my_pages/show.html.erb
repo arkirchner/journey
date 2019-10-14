@@ -10,8 +10,16 @@
       </div>
     </template>
 
-    <div class="drop-zone" data-target="upload.dropZone" data-action="click->upload#open">
-    </div>
+    <%= tag.div class: "drop-zone", data: {
+      target: "upload.dropZone",
+      action: [
+        "click->upload#open",
+        "dragover->upload#dragOver",
+        "dragleave->upload#dragLeave",
+        "dragenter->upload#dragEnter",
+        "drop->upload#drop",
+      ].join(" "),
+    } %>
 
     <%= form_with(model: UnprocessedImage.new, data: { target: "upload.form", action: "ajax:success->upload#show" }) do |form| %>
       <%= form.hidden_field :image, data: { target: "upload.fileInput" } %>

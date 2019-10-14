@@ -9,7 +9,8 @@
   min-height: 7rem;
   padding: 0.5rem;
 
-  &:hover {
+  &:hover,
+  &--active {
     animation: dropZoneFlicker 1s infinite ease-in-out;
     cursor: pointer;
   }
