@@ -1,5 +1,9 @@
 class User < ApplicationRecord
-  PROVIDER = %w(developer github).freeze
+  PROVIDER = %w[developer github].freeze
+
+  has_many :unprocessed_images,
+           -> { order(created_at: :desc) },
+           dependent: :destroy, inverse_of: :user
 
   def self.find_or_create_from_auth_hash(auth_hash)
     user_id, provider = auth_hash.values_at :uid, :provider

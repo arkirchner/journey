@@ -1,21 +1,28 @@
-<main class="container-fluid">
+<main class="container">
   <h1>Explore your journey around the world.</h1>
 
-  <div class="drop-zone">
-    <% 2.times do %>
+  <section data-controller="upload" data-upload-url="<%= rails_direct_uploads_path %>">
+    <template data-target="upload.template">
       <div class="drop-zone__item">
-        <img class="drop-zone__item__image" src="https://dummyimage.com/600x400/000/fff.png">
+        <img class="drop-zone__item__image" src="IMAGE_URL">
         <%= inline_svg "@fortawesome/fontawesome-free/svgs/solid/spinner.svg", class: "drop-zone__item__icon drop-zone__item__state--downloading" %>
         <%= inline_svg "@fortawesome/fontawesome-free/svgs/solid/check-double.svg", class: "drop-zone__item__icon drop-zone__item__state--downloaded" %>
       </div>
+    </template>
+
+    <div class="drop-zone" data-target="upload.dropZone" data-action="click->upload#open">
+    </div>
+
+    <%= form_with(model: UnprocessedImage.new, data: { target: "upload.form", action: "ajax:success->upload#show" }) do |form| %>
+      <%= form.hidden_field :image, data: { target: "upload.fileInput" } %>
     <% end %>
 
-    <% 2.times do %>
-      <div class="drop-zone__item drop-zone__item--active">
-        <img class="drop-zone__item__image" src="https://dummyimage.com/600x400/000/fff.png">
-        <%= inline_svg "@fortawesome/fontawesome-free/svgs/solid/spinner.svg", class: "drop-zone__item__icon drop-zone__item__state--downloading" %>
-        <%= inline_svg "@fortawesome/fontawesome-free/svgs/solid/check-double.svg", class: "drop-zone__item__icon drop-zone__item__state--downloaded" %>
-      </div>
-    <% end %>
-  </div>
+    <%= file_field_tag :files, multiple: true, hidden: true, data: { action: "change->upload#save", target: "upload.input" } %>
+
+    <div class="card-columns" data-target="upload.uploads">
+      <% current_user.unprocessed_images.each do |unprocessed_image| %>
+        <%= render unprocessed_image %>
+      <% end %>
+    </div>
+  </section>
 </main>
