@@ -10,7 +10,7 @@
       </div>
     </template>
 
-    <%= tag.div class: "drop-zone", data: {
+    <%= tag.div class: "drop-zone", id: "drop-zone", data: {
       target: "upload.dropZone",
       action: [
         "click->upload#open",
@@ -27,7 +27,7 @@
 
     <%= file_field_tag :files, multiple: true, hidden: true, data: { action: "change->upload#save", target: "upload.input" } %>
 
-    <div class="card-columns" data-target="upload.uploads">
+    <div id="unprocessed-images" class="card-columns" data-target="upload.uploads">
       <% current_user.unprocessed_images.each do |unprocessed_image| %>
         <%= render unprocessed_image %>
       <% end %>
