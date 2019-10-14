@@ -11,9 +11,12 @@ gem "dotenv-rails", require: "dotenv/rails-now"
 
 gem "autoprefixer-rails"
 gem "bootsnap", require: false
+gem "daemons"
 gem "delayed_job_active_record"
 gem "honeybadger"
+gem "image_processing"
 gem "inline_svg"
+gem "mini_magick"
 gem "oj"
 gem "omniauth"
 gem "omniauth-github"
