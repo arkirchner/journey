@@ -11,6 +11,7 @@
 
 // bootstrap components
 @import "bootstrap/scss/alert";
+@import "bootstrap/scss/buttons";
 @import "bootstrap/scss/card";
 @import "bootstrap/scss/close";
 @import "bootstrap/scss/dropdown";
@@ -18,3 +19,8 @@
 @import "bootstrap/scss/navbar";
 
 @import "components/*";
+
+// Rails default classes
+.button_to {
+  display: inline-block;
+}

@@ -1,7 +1,7 @@
 module AuthHelper
   def sign_up_with_github
     visit "/"
-    click_link "Github"
+    click_button "Github"
   end
 
   def sign_out

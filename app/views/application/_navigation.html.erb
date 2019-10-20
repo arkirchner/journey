@@ -28,13 +28,13 @@
         <span class="navbar-text">
           Sign in with
         </span>
-        <%= link_to github_auth_path do %>
+        <%= button_to github_auth_path, class: "btn btn-link btn-sm" do %>
           <span class="sr-only">Github</span>
-          <%= inline_svg "@fortawesome/fontawesome-free/svgs/brands/github.svg", class: "nav-icon ml-2" %>
+          <%= inline_svg "@fortawesome/fontawesome-free/svgs/brands/github.svg", class: "nav-icon" %>
         <% end %>
         <% unless Rails.env.production? %>
-          <%= link_to developer_auth_path do %>
-            <%= inline_svg "@fortawesome/fontawesome-free/svgs/brands/dev.svg", class: "nav-icon ml-2" %>
+          <%= button_to developer_auth_path, class: "btn btn-link btn-sm" do %>
+            <%= inline_svg "@fortawesome/fontawesome-free/svgs/brands/dev.svg", class: "nav-icon" %>
           <% end %>
         <% end %>
       </li>
