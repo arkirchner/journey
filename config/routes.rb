@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :unprocessed_images, only: :create
+  resources :unprocessed_images, only: %i(create show)
   resource :my_page, only: :show
 
   match "/auth/:provider/callback", to: "sessions#create", via: %i[get post]

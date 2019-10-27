@@ -8,6 +8,7 @@
 // utilities
 @import "bootstrap/scss/utilities/background";
 @import "bootstrap/scss/utilities/screenreaders";
+@import "bootstrap/scss/utilities/embed";
 
 // bootstrap components
 @import "bootstrap/scss/alert";
@@ -17,6 +18,10 @@
 @import "bootstrap/scss/dropdown";
 @import "bootstrap/scss/nav";
 @import "bootstrap/scss/navbar";
+@import "bootstrap/scss/progress";
+
+// map style
+@import "leaflet/dist/leaflet";
 
 @import "components/*";
 
