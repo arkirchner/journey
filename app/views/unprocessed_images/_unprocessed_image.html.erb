@@ -4,7 +4,11 @@
   <%= image_tag unprocessed_image.image.variant({ thumbnail: "530x" }), class: "card-img" %>
   <div class="card-img-overlay d-flex justify-content-center align-items-end">
     <div class="w-100 d-flex flex-column">
-      <button type="button" class="btn btn-primary btn-block">Save to journey.</button>
+      <button type="button"
+              class="btn btn-primary btn-block"
+              data-action="unprocessed-image#save">
+        Save to journey.
+      </button>
       <div class="progress">
         <div class="progress-bar progress-bar-striped progress-bar-animated"
              role="progressbar"

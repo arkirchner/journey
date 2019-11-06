@@ -3,6 +3,7 @@ import { Map, TileLayer, Marker, Icon } from 'leaflet';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+import { open as openModal } from './modal_controller';
 
 const icon = new Icon({
   iconUrl: markerIcon,
@@ -21,7 +22,7 @@ export default class extends Controller {
   connect() {
     this.state = 0;
     this._update();
-    this.map = this._createMap();
+    // this.map = this._createMap();
   }
 
   _update = () => {
@@ -32,6 +33,10 @@ export default class extends Controller {
       setTimeout(this._update, 50);
     }
   };
+
+  save() {
+    openModal(Array(4000).fill('sssssssssssssssssssssssss').join('\n'));
+  }
 
   _setState(progress) {
     this.progressTarget.setAttribute('aria-valuenow', progress);
