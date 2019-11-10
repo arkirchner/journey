@@ -4,6 +4,7 @@ import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 import { open as openModal } from './modal_controller';
+import ajaxToHtml from '../utils/ajax_to_html';
 
 const icon = new Icon({
   iconUrl: markerIcon,
@@ -34,8 +35,8 @@ export default class extends Controller {
     }
   };
 
-  save() {
-    openModal(Array(4000).fill('sssssssssssssssssssssssss').join('\n'));
+  edit(event) {
+    openModal(ajaxToHtml(event));
   }
 
   _setState(progress) {

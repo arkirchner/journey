@@ -3,6 +3,10 @@ class UnprocessedImagesController < ApplicationController
     render partial: UnprocessedImage.create(unprocessed_image_params)
   end
 
+  def edit
+    render "update", layout: false
+  end
+
   private
 
   def unprocessed_image_params
