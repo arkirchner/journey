@@ -13,6 +13,8 @@ gem "autoprefixer-rails"
 gem "bootsnap", require: false
 gem "daemons"
 gem "delayed_job_active_record"
+gem "exif"
+gem "geocoder"
 gem "honeybadger"
 gem "image_processing"
 gem "inline_svg"
@@ -46,6 +48,7 @@ group :development, :test do
   gem "bullet"
   gem "bundler-audit", ">= 0.5.0", require: false
   gem "factory_bot_rails"
+  gem "faker"
   gem "pry-byebug"
   gem "pry-rails"
   gem "rspec-rails"

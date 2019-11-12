@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_13_173651) do
+ActiveRecord::Schema.define(version: 2019_11_10_161413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,10 +51,21 @@ ActiveRecord::Schema.define(version: 2019_10_13_173651) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
+  create_table "ip_locations", id: false, force: :cascade do |t|
+    t.inet "ip"
+    t.decimal "lat", precision: 10, scale: 7, null: false
+    t.decimal "lng", precision: 10, scale: 7, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "unprocessed_images", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.inet "uploader_ip", null: false
+    t.decimal "lat", precision: 10, scale: 7, default: "0.0", null: false
+    t.decimal "lng", precision: 10, scale: 7, default: "0.0", null: false
     t.index ["user_id"], name: "index_unprocessed_images_on_user_id"
   end
 
