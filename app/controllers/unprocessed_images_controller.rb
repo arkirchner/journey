@@ -1,4 +1,8 @@
 class UnprocessedImagesController < ApplicationController
+  def show
+    render partial: UnprocessedImage.with_user(current_user).find(params[:id])
+  end
+
   def create
     render partial: UnprocessedImage.create(unprocessed_image_params)
   end

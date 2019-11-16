@@ -2,6 +2,8 @@ class UnprocessedImage < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
+  scope :with_user, ->(user) { where(user: user) }
+
   def update_lat_lng_from_image
     image.open do |file|
       data = Exif::Data.new(file)
