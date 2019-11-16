@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_10_161413) do
+ActiveRecord::Schema.define(version: 2019_11_16_135718) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 2019_11_10_161413) do
     t.inet "uploader_ip", null: false
     t.decimal "lat", precision: 10, scale: 7, default: "0.0", null: false
     t.decimal "lng", precision: 10, scale: 7, default: "0.0", null: false
+    t.boolean "position_processed", default: false, null: false
     t.index ["user_id"], name: "index_unprocessed_images_on_user_id"
   end
 

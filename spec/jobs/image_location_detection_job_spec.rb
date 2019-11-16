@@ -8,6 +8,14 @@ RSpec.describe ImageLocationDetectionJob, type: :job do
       UnprocessedImage.set_callback :create, :after, :process
     end
 
+    it "updates the position processed flag" do
+      image = create :unprocessed_image
+      described_class.new.perform(image.id)
+      image.reload
+
+      expect(image).to be_position_processed
+    end
+
     context "with images containing exif information" do
       it "extracts the position from jpg file" do
         image = create :unprocessed_image, :jpg

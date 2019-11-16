@@ -11,17 +11,20 @@ class ImageLocationDetectionJob < ApplicationJob
   attr_reader :unprocessed_image
 
   def update_lat_lng
+    unprocessed_image.update!(lat_lng.merge(position_processed: true))
+  end
+
+  def lat_lng
     unprocessed_image.image.open do |file|
       data = Exif::Data.new(file)
 
-      unprocessed_image.update!(
+      {
         lat: rational_coordinate_to_decimal(data.gps_latitude),
         lng: rational_coordinate_to_decimal(data.gps_longitude),
-      )
+      }
     end
   rescue Exif::NotReadable
-    lat, lng = IpLocation.by_ip(unprocessed_image.uploader_ip)
-    unprocessed_image.update!(lat: lat, lng: lng)
+    IpLocation.by_ip(unprocessed_image.uploader_ip)
   end
 
   def rational_coordinate_to_decimal(coordinate)

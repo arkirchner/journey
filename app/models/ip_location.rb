@@ -7,7 +7,7 @@ class IpLocation < ApplicationRecord
 
   def to_lat_lng
     set_lat_lng && save! if cache_to_old?
-    [lat, lng]
+    { lat: lat, lng: lng }
   end
 
   private

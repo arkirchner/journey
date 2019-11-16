@@ -22,13 +22,13 @@ RSpec.describe IpLocation, type: :model do
     it "returns coordinates for an IP" do
       coordinates = described_class.by_ip("124.155.111.72")
 
-      expect(coordinates).to match([35.6363, 139.6795])
+      expect(coordinates).to match(lat: 35.6363, lng: 139.6795)
     end
 
     it "returns the default position for an IP with unknow location" do
       coordinates = described_class.by_ip("1.2.3.4")
 
-      expect(coordinates).to match([0.0, 0.0])
+      expect(coordinates).to match(lat: 0.0, lng: 0.0)
     end
 
     context "with position look up cache" do
