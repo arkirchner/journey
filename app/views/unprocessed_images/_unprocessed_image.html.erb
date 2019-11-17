@@ -1,22 +1,28 @@
-<div class="card bg-dark text-white"
+<div class="card bg-dark"
      data-controller="unprocessed-image"
-     data-unprocessed-image-refresh-timeout="3000"
+     <% unless unprocessed_image.processed? %>
+       data-unprocessed-image-refresh-timeout="3000"
+     <% end %>
      data-unprocessed-image-url="<%= unprocessed_image_path(unprocessed_image.id) %>">
   <%= image_tag unprocessed_image.image.variant({ thumbnail: "530x" }), class: "card-img" %>
   <div class="card-img-overlay d-flex justify-content-center align-items-end">
     <div class="w-100 d-flex flex-column">
-      <%= link_to "Save to journey", edit_unprocessed_image_path(unprocessed_image),
-        class: "btn btn-primary btn-block",
-        data: { remote: true, action: "ajax:success->unprocessed-image#edit" } %>
-      <div class="progress">
-        <div class="progress-bar progress-bar-striped progress-bar-animated"
-             role="progressbar"
-             aria-valuenow="0"
-             aria-valuemin="0"
-             aria-valuemax="100"
-             data-target="unprocessed-image.progress">
+      <% if unprocessed_image.processed? %>
+        <%= link_to "Save to journey", edit_unprocessed_image_path(unprocessed_image),
+          class: "btn btn-primary btn-block",
+          data: { remote: true, action: "ajax:success->unprocessed-image#edit" } %>
+      <% else %>
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated"
+               role="progressbar"
+               style="width: 25%"
+               aria-valuenow="10"
+               aria-valuemin="0"
+               aria-valuemax="100"
+               data-target="unprocessed-image.progress">
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
     <%
       # <div class="embed-responsive embed-responsive-16by9">

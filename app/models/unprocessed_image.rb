@@ -5,6 +5,10 @@ class UnprocessedImage < ApplicationRecord
 
   scope :with_user, ->(user) { where(user: user) }
 
+  def processed?
+    position_processed?
+  end
+
   private
 
   def process
