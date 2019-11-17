@@ -4,7 +4,9 @@ class UnprocessedImagesController < ApplicationController
   end
 
   def create
-    render partial: UnprocessedImage.create(unprocessed_image_params)
+    image = UnprocessedImage.create(unprocessed_image_params)
+    image.process_later
+    render partial: image
   end
 
   def edit
