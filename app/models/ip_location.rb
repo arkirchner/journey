@@ -1,4 +1,7 @@
 class IpLocation < ApplicationRecord
+  FALLBACK_LAT = 0
+  FALLBACL_LNG = 0
+
   before_create :set_lat_lng
 
   def self.by_ip(ip)
@@ -17,14 +20,8 @@ class IpLocation < ApplicationRecord
   end
 
   def set_lat_lng
-    data = Geocoder.search(ip.to_s).first
+    lat, lng = Geocoder.search(ip.to_s).first&.coordinates
 
-    if data.blank?
-      self.lat = 0.0
-      self.lng = 0.0
-      return
-    end
-
-    self.lat, self.lng = data.coordinates
+    assign_attributes(lat: lat || FALLBACK_LAT, lng: lng || FALLBACL_LNG)
   end
 end
