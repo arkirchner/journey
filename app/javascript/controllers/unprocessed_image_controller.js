@@ -4,6 +4,7 @@ import { Map, TileLayer, Marker, Icon } from 'leaflet';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+import morphdom from 'morphdom';
 import { open as openModal } from './modal_controller';
 import ajaxToHtml from '../utils/ajax_to_html';
 
@@ -26,21 +27,22 @@ export default class extends Controller {
     // this._update();
     // this.map = this._createMap();
     //
-    if (this.data.has('refreshTimeout')) {
-      setTimeout(() => {
-        ajax({
-          url: this.url,
-          type: 'GET',
-          success: (...data) => {
-            this.element.outerHTML = ajaxToHtml(data);
-          },
-        });
-      }, this.data.get('refreshTimeout'));
+    this._refresh();
+  }
+
+  disconnect() {
+    if (this._refreshTimer) {
+      clearInterval(this._refreshTimer);
     }
   }
 
   get url() {
     return this.data.get('url');
+  }
+
+  get processing() {
+    console.log('processing', this.data.get('processing'));
+    return String(this.data.get('processing')) === 'true';
   }
 
   // _update = () => {
@@ -55,6 +57,30 @@ export default class extends Controller {
   edit(event) {
     openModal(ajaxToHtml(event));
   }
+
+  _refresh() {
+    if (this.processing) {
+      this._refreshTimer = setInterval(() => {
+        this._load();
+      }, 3000);
+    }
+  }
+
+  _load = () => {
+    ajax({
+      url: this.url,
+      type: 'GET',
+      success: (...data) => {
+        if (this.processing) {
+          morphdom(this.element, ajaxToHtml(data));
+
+          if (this.processing) {
+            clearInterval(this._refreshTimer);
+          }
+        }
+      },
+    });
+  };
 
   // _setState(progress) {
   //   this.progressTarget.setAttribute('aria-valuenow', progress);

@@ -14,12 +14,20 @@ describe "My Page", js: true do
     end
   end
 
+  it "prosses the uploaded image and shows the save button when finished" do
+    upload_file
+
+    expect(page).to have_text "Save to journey"
+  end
+
   it "can save the uploaded file to the journey" do
     upload_file
 
     click_on "Save to journey"
 
-    expect(page).to have_text("Hoge Moge")
+    click_on "Confirm!"
+
+    expect(page).to have_text "The image was saved to your journey!"
   end
 
   def upload_file

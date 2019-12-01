@@ -39,7 +39,7 @@ export default class extends Controller {
   disconnect() {
     document.removeEventListener(OPEN_EVENT, this._open, false);
     document.removeEventListener(CLOSE_EVENT, this._close, false);
-    this.close();
+    this._close();
   }
 
   _open = ({ detail: html }) => {

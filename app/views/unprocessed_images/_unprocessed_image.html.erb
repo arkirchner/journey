@@ -1,8 +1,6 @@
 <div class="card bg-dark"
      data-controller="unprocessed-image"
-     <% unless unprocessed_image.processed? %>
-       data-unprocessed-image-refresh-timeout="3000"
-     <% end %>
+     data-unprocessed-image-processing="<%= !unprocessed_image.processed? %>"
      data-unprocessed-image-url="<%= unprocessed_image_path(unprocessed_image.id) %>">
   <%= image_tag unprocessed_image.image.variant({ thumbnail: "530x" }), class: "card-img" %>
   <div class="card-img-overlay d-flex justify-content-center align-items-end">
